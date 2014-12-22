@@ -11,9 +11,9 @@ class AbstractPlugin(dict):
 
     def __getattr__(self, item):
         try:
-            return self[item]
-        except KeyError:
             return self.__getattribute__(item)
+        except AttributeError:
+            return self[item]
 
 
 class AbstractSenderPlugin(AbstractPlugin):
